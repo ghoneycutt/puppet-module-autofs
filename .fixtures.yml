@@ -1,0 +1,6 @@
+fixtures:
+# GH: module not yet posted
+#  repositories:
+#    "nfs": "git://github.com/ghoneycutt/puppet-module-nfs.git"
+  symlinks:
+    "autofs": "#{source_dir}"

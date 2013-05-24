@@ -1,4 +1,4 @@
-puppet-module-autofs
-====================
+# autofs #
+===
 
-Puppet module to manage autofs
+Automounter for NFS.

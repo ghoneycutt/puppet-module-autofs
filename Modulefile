@@ -1,0 +1,10 @@
+name    'ghoneycutt-autofs'
+version '0.0.1'
+source 'git://github.com/ghoneycutt/puppet-module-autofs.git'
+author 'ghoneycutt'
+license 'Apache License, Version 2.0'
+summary 'autofs'
+description 'Manage automounter'
+project_page 'https://github.com/ghoneycutt/puppet-module-autofs'
+
+dependency 'ghoneycutt/nfs', '>= 0.0.1'
