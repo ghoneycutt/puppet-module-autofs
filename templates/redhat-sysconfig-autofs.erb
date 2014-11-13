@@ -1,0 +1,73 @@
+# This file is being maintained by Puppet.
+# DO NOT EDIT
+
+#
+# Init system options
+#
+#
+# Define default options for autofs.
+#
+# MASTER_MAP_NAME - default map name for the master map.
+#
+MASTER_MAP_NAME="/etc/auto.master"
+#
+# TIMEOUT - set the default mount timeout (default 600).
+#
+TIMEOUT=<%= @mount_timeout %>
+#
+# NEGATIVE_TIMEOUT - set the default negative timeout for
+#          failed mount attempts (default 60).
+#
+#NEGATIVE_TIMEOUT=60
+#
+# MOUNT_WAIT - time to wait for a response from umount(8).
+#          Setting this timeout can cause problems when
+#          mount would otherwise wait for a server that
+#          is temporarily unavailable, such as when it's
+#          restarting. The defailt of waiting for mount(8)
+#          usually results in a wait of around 3 minutes.
+#
+#MOUNT_WAIT=-1
+#
+# UMOUNT_WAIT - time to wait for a response from umount(8).
+#
+<% if @umount_wait -%>
+UMOUNT_WAIT=<%= @umount_wait -%>
+
+<% else -%>
+#UMOUNT_WAIT=12
+<% end -%>
+#
+# BROWSE_MODE - maps are browsable by default.
+#
+BROWSE_MODE=<%= @browsable %>
+#
+# MOUNT_NFS_DEFAULT_PROTOCOL - specify the default protocol used by
+#              mount.nfs(8). Since we can't identify
+#              the default automatically we need to
+#              set it in our configuration. This will
+#              only make a difference for replicated
+#              map entries as availability probing isn't
+#              used for single host map entries.
+#
+#MOUNT_NFS_DEFAULT_PROTOCOL=3
+#
+# APPEND_OPTIONS - append to global options instead of replace.
+#
+#APPEND_OPTIONS="yes"
+#
+# LOGGING - set default log level "none", "verbose" or "debug"
+#
+#LOGGING="none"
+#
+# If the kernel supports using the autofs miscellanous device
+# and you wish to use it you must set this configuration option
+# to "yes" otherwise it will not be used.
+#
+USE_MISC_DEVICE="yes"
+#
+# Use OPTIONS to add automount(8) command line options that
+# will be used when the daemon is started.
+#
+#OPTIONS=""
+#
