@@ -50,5 +50,5 @@ autofs::browsable: 'no'
 autofs::mounts:
   - +auto.master
   - /home auto.home
-  - /somepath auto.somepath -nobrowse
+  - /somepath yp auto.somepath -nobrowse
 </pre>
