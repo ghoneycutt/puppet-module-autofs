@@ -43,6 +43,7 @@ Array value to set mount paths.
 
 ### Sample usage:
 
+<pre>
 autofs::enable: true
 autofs::timeout: 2400
 autofs::browsable: 'no'
@@ -50,3 +51,4 @@ autofs::mounts:
   - +auto.master
   - /home auto.home
   - /somepath auto.somepath -nobrowse
+</pre>
