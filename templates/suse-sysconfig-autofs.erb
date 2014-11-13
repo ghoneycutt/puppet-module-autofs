@@ -1,0 +1,102 @@
+#
+## This file is maintained by puppet. Manual changes will be overwritten.
+#
+
+## Path:           System/File systems/Autofs
+## Description:    General global options.
+## Type:           string
+## Default:        ""
+## ServiceReload:  autofs
+#
+AUTOFS_OPTIONS=""
+
+## Description:    default mount options.
+## Type:           string
+## Default:        ""
+#
+# default mount options which are appended or replaced to
+# each map entry (see also APPEND_OPTIONS)
+LOCAL_OPTIONS=""
+
+## Description:    append or replace options
+## Type:           string
+## Default:        "yes"
+#
+# Determine  whether LOCAL_OPTIONS are appended to map entry options 
+# or if the map entry options replace the global options
+# (program default "yes", append options).
+APPEND_OPTIONS="yes"
+
+## Description:    use autofs miscellaneous device
+## Type:           string
+## Default:        "yes"
+#
+# Determine whether the autofs misc device (/dev/autofs) will be used
+# for routing ioctl commands.
+USE_MISC_DEVICE="yes"
+
+## Description:    Default map name for the master map.
+## Type:           string
+## Default:        "auto.master"
+#
+DEFAULT_MASTER_MAP_NAME="auto.master"
+
+## Description:    Set the default mount timeout (default 600).
+## Type:           integer(0:)
+## Default:        600
+#
+DEFAULT_TIMEOUT=<%= mounttimeout %>
+
+## Description:    maps are browsable by default.
+## Type:           string
+## Default:        "yes"
+#
+DEFAULT_BROWSE_MODE=<%= browsable %>
+
+## Description:    Set default log level.
+## Type:           string
+## Default:        "none"
+#
+# "none", "verbose" or "debug"
+#
+DEFAULT_LOGGING="none"
+
+## Description:    Define the default LDAP schema to use for lookups.
+## Type:           string
+## Default:        "auto.master"
+#
+# System default
+#
+DEFAULT_MAP_OBJECT_CLASS="nisMap"
+DEFAULT_ENTRY_OBJECT_CLASS="nisObject"
+DEFAULT_MAP_ATTRIBUTE="nisMapName"
+DEFAULT_ENTRY_ATTRIBUTE="cn"
+DEFAULT_VALUE_ATTRIBUTE="nisMapEntry"
+#
+# Other common LDAP nameing
+#
+#DEFAULT_MAP_OBJECT_CLASS="automountMap"
+#DEFAULT_ENTRY_OBJECT_CLASS="automount"
+#DEFAULT_MAP_ATTRIBUTE="ou"
+#DEFAULT_ENTRY_ATTRIBUTE="cn"
+#DEFAULT_VALUE_ATTRIBUTE="automountInformation"
+#
+#DEFAULT_MAP_OBJECT_CLASS="automountMap"
+#DEFAULT_ENTRY_OBJECT_CLASS="automount"
+#DEFAULT_MAP_ATTRIBUTE="automountMapName"
+#DEFAULT_ENTRY_ATTRIBUTE="automountKey"
+#DEFAULT_VALUE_ATTRIBUTE="automountInformation"
+
+## Description:    set the default location for the SASL authentication configuration file.
+## Type:           string
+## Default:        "/etc/autofs_ldap_auth.conf"
+#
+DEFAULT_AUTH_CONF_FILE="etc/autofs_ldap_auth.conf"
+
+## Description:    set the map cache hash table size.
+## Type:           integer
+## Default:        1024
+#
+# Should be a power of 2 with a ratio roughly between 1:10 and 1:20
+# for each map.
+MAP_HASH_TABLE_SIZE=1024

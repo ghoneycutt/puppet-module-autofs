@@ -1,6 +1,7 @@
 fixtures:
   repositories:
-    "nfs": "git://github.com/ghoneycutt/puppet-module-nfs.git"
-    "network": "git://github.com/ghoneycutt/puppet-network.git"
+    stdlib:
+      repo: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
+      ref: '3.2.0'
   symlinks:
     "autofs": "#{source_dir}"
