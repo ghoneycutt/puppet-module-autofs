@@ -11,7 +11,7 @@ MASTER_MAP_NAME="/etc/auto.master"
 #
 # TIMEOUT - set the default mount timeout (default 600).
 #
-TIMEOUT=<%= mounttimeout %>
+TIMEOUT=<%= @mounttimeout %>
 #
 # NEGATIVE_TIMEOUT - set the default negative timeout for
 # 		     failed mount attempts (default 60).
@@ -33,7 +33,7 @@ TIMEOUT=<%= mounttimeout %>
 #
 # BROWSE_MODE - maps are browsable by default.
 #
-BROWSE_MODE=<%= browsable %>
+BROWSE_MODE=<%= @browsable %>
 #
 # MOUNT_NFS_DEFAULT_PROTOCOL - specify the default protocol used by
 # 			       mount.nfs(8). Since we can't identify
