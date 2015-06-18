@@ -82,7 +82,7 @@ describe 'autofs' do
         context 'where enable is false' do
           let :params do
             {
-              :enable => 'false',
+              :enable => false,
             }
           end
 

@@ -26,21 +26,12 @@ class autofs(
     }
   }
 
-  case type($enable) {
-    'string': {
-      validate_re($enable, '^(true|false)$', "autofs::enable may be either 'true' or 'false' and is set to <${enable}>")
-      $enable_real = str2bool($enable)
-    }
-    'boolean': {
-      $enable_real = $enable
-    }
-    default: {
-      fail('autofs::enable type must be true or false.')
-    }
-  }
+  validate_bool($enable)
 
-  if is_integer($mounttimeout) == false {
-    fail("autofs::mounttimeout is set to <${mounttimeout}>. It should be an integer.")
+  validate_integer($mounttimeout)
+
+  if $umountwait != undef {
+    validate_integer($umountwait)
   }
 
   validate_re($browsable, '^(yes|YES|no|NO)$', "autofs::browsable may be either 'yes', 'YES', 'no' or 'NO' and is set to <${browsable}>")
@@ -49,7 +40,7 @@ class autofs(
     validate_array($mounts)
   }
 
-  if $enable_real == true {
+  if $enable == true {
 
     package { $package_name:
       ensure => present,
