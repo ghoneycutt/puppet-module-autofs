@@ -104,6 +104,15 @@ describe 'autofs' do
           it { should contain_file("#{v[:config_file]}").with_content(/TIMEOUT=84600$/) }
         end
 
+        context 'where umountwait is set to 2' do
+          let :params do
+            {
+              :umountwait  => '2',
+            }
+          end
+          it { should contain_file("#{v[:config_file]}").with_content(/UMOUNT_WAIT=2$/) }
+        end
+
         context 'where mounts is set' do
           let :params do
             {

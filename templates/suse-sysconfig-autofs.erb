@@ -100,3 +100,12 @@ DEFAULT_AUTH_CONF_FILE="etc/autofs_ldap_auth.conf"
 # Should be a power of 2 with a ratio roughly between 1:10 and 1:20
 # for each map.
 MAP_HASH_TABLE_SIZE=1024
+
+# UMOUNT_WAIT - time to wait for a response from umount(8).
+#
+<% if @umountwait -%>
+UMOUNT_WAIT=<%= @umountwait -%>
+
+<% else -%>
+#UMOUNT_WAIT=12
+<% end -%>

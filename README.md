@@ -29,6 +29,13 @@ Numeric value to set timeout of mounts in seconds.
 
 - *Default*: 300
 
+umountwait
+----------
+Numeric value to try and prevent expire delays when trying to umount from a server
+that is not available.
+
+- *DEFAILT*: undef
+
 browsable
 ---------
 String value to set browse mode. Valid values are 'yes', 'YES', 'no' and 'NO'.

@@ -5,6 +5,7 @@
 class autofs(
   $enable           = true,
   $mounttimeout     = 300,
+  $umountwait       = undef,
   $browsable        = 'no',
   $mounts           = undef,
 ){

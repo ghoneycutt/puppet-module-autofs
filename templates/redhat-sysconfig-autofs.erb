@@ -32,7 +32,12 @@ TIMEOUT=<%= @mounttimeout %>
 #
 # UMOUNT_WAIT - time to wait for a response from umount(8).
 #
+<% if @umountwait -%>
+UMOUNT_WAIT=<%= @umountwait -%>
+
+<% else -%>
 #UMOUNT_WAIT=12
+<% end -%>
 #
 # BROWSE_MODE - maps are browsable by default.
 #
