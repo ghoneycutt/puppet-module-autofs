@@ -69,7 +69,6 @@ describe 'autofs' do
     end
   end
 
-
   describe 'with optional parameters set' do
     platforms.sort.each do |k,v|
       context "where osfamily is <#{v[:osfamily]}>" do
@@ -126,6 +125,5 @@ describe 'autofs' do
       end
     end
   end
-
 end
 

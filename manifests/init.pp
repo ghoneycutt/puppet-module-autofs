@@ -8,21 +8,19 @@ class autofs(
   $umountwait       = undef,
   $browsable        = 'no',
   $mounts           = undef,
+  $package_name     = 'autofs',
+  $service_name     = 'autofs',
 ){
 
   case $::osfamily {
     'Suse', 'RedHat': {
-      $package_name = 'autofs'
-      $service_name = 'autofs'
       $config_file  = '/etc/sysconfig/autofs'
     }
     'Debian': {
-      $package_name = 'autofs'
-      $service_name = 'autofs'
       $config_file  = '/etc/default/autofs'
     }
     default: {
-      fail("cron supports osfamilies RedHat, Suse and Debian. Detected osfamily is <${::osfamily}>.")
+      fail("autofs supports osfamilies RedHat, Suse and Debian. Detected osfamily is <${::osfamily}>.")
     }
   }
 
@@ -39,6 +37,10 @@ class autofs(
   if $mounts != undef {
     validate_array($mounts)
   }
+
+  validate_string($package_name)
+
+  validate_string($service_name)
 
   if $enable == true {
 

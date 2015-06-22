@@ -48,6 +48,18 @@ Array value to set mount paths.
 
 - *Default*: undef
 
+package_name
+------------
+Name of package to install for automount functionality
+
+- *Default*: autofs
+
+service_name
+------------
+Name of service to handle for automount functionality
+
+- *Default*: autofs
+
 ### Sample usage:
 
 <pre>
