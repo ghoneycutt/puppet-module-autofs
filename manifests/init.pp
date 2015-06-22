@@ -77,7 +77,7 @@ class autofs(
     service { $service_name:
       ensure     => 'running',
       enable     => true,
-      require => Package['autofs'],
+      require => Package[$package_name],
     }
 
   } else {
