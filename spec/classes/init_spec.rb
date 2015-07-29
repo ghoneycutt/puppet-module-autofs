@@ -43,10 +43,9 @@ describe 'autofs' do
 
         it {
           should contain_service("#{v[:service_name]}").with({
-            'ensure'    => 'running',
+            'ensure'    => true,
             'enable'    => true,
             'name'      => v[:service_name],
-            'require'   => "Package[#{v[:package_name]}]",
           })
         }
 
@@ -87,7 +86,7 @@ describe 'autofs' do
 
           it {
             should contain_service('autofs').with({
-              'ensure'  => 'stopped',
+              'ensure'  => false,
               'enable'  => false,
             })
 
@@ -97,16 +96,16 @@ describe 'autofs' do
         context 'where timeout is changed to 84600' do
           let :params do
             {
-              :mounttimeout  => '84600',
+              :mount_timeout  => '84600',
             }
           end
           it { should contain_file("#{v[:config_file]}").with_content(/TIMEOUT=84600$/) }
         end
 
-        context 'where umountwait is set to 2' do
+        context 'where umount_wait is set to 2' do
           let :params do
             {
-              :umountwait  => '2',
+              :umount_wait  => '2',
             }
           end
           it { should contain_file("#{v[:config_file]}").with_content(/UMOUNT_WAIT=2$/) }

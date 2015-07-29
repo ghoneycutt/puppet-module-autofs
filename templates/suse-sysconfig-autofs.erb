@@ -1,6 +1,5 @@
-#
-## This file is maintained by puppet. Manual changes will be overwritten.
-#
+# This file is being maintained by Puppet.
+# DO NOT EDIT
 
 ## Path:           System/File systems/Autofs
 ## Description:    General global options.
@@ -45,7 +44,7 @@ DEFAULT_MASTER_MAP_NAME="auto.master"
 ## Type:           integer(0:)
 ## Default:        600
 #
-DEFAULT_TIMEOUT=<%= @mounttimeout %>
+DEFAULT_TIMEOUT=<%= @mount_timeout %>
 
 ## Description:    maps are browsable by default.
 ## Type:           string
@@ -103,8 +102,8 @@ MAP_HASH_TABLE_SIZE=1024
 
 # UMOUNT_WAIT - time to wait for a response from umount(8).
 #
-<% if @umountwait -%>
-UMOUNT_WAIT=<%= @umountwait -%>
+<% if @umount_wait -%>
+UMOUNT_WAIT=<%= @umount_wait -%>
 
 <% else -%>
 #UMOUNT_WAIT=12

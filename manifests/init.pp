@@ -1,23 +1,29 @@
-# ## Class: autofs ##
+# == Class: autofs
 #
 # Manage AutoFS
 #
 class autofs(
-  $enable           = true,
-  $mounttimeout     = 300,
-  $umountwait       = undef,
-  $browsable        = 'no',
-  $mounts           = undef,
-  $package_name     = 'autofs',
-  $service_name     = 'autofs',
-){
+  $enable        = true,
+  $mount_timeout = 300,
+  $umount_wait   = undef,
+  $browsable     = 'no',
+  $mounts        = undef,
+  $package_name  = 'autofs',
+  $service_name  = 'autofs',
+) {
 
   case $::osfamily {
-    'Suse', 'RedHat': {
-      $config_file  = '/etc/sysconfig/autofs'
+    'RedHat': {
+      $config_file   = '/etc/sysconfig/autofs'
+      $template_name = 'autofs/redhat-sysconfig-autofs.erb'
+    }
+    'Suse': {
+      $config_file   = '/etc/sysconfig/autofs'
+      $template_name = 'autofs/suse-sysconfig-autofs.erb'
     }
     'Debian': {
-      $config_file  = '/etc/default/autofs'
+      $config_file   = '/etc/default/autofs'
+      $template_name = 'autofs/debian-default-autofs.erb'
     }
     default: {
       fail("autofs supports osfamilies RedHat, Suse and Debian. Detected osfamily is <${::osfamily}>.")
@@ -26,10 +32,10 @@ class autofs(
 
   validate_bool($enable)
 
-  validate_integer($mounttimeout)
+  validate_numeric($mount_timeout, undef, 1)
 
-  if $umountwait != undef {
-    validate_integer($umountwait)
+  if $umount_wait != undef {
+    validate_numeric($umount_wait, undef, 1)
   }
 
   validate_re($browsable, '^(yes|YES|no|NO)$', "autofs::browsable may be either 'yes', 'YES', 'no' or 'NO' and is set to <${browsable}>")
@@ -54,11 +60,7 @@ class autofs(
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        content => $::osfamily ? {
-          'Suse'    => template('autofs/suse-sysconfig-autofs.erb'),
-          'RedHat'  => template('autofs/redhat-sysconfig-autofs.erb'),
-          'Debian'  => template('autofs/debian-default-autofs.erb'),
-        },
+        content => template($template_name),
         require => Package[$package_name],
         notify  => Service[$service_name],
       }
@@ -73,19 +75,10 @@ class autofs(
       require => Package[$package_name],
       notify  => Service[$service_name],
     }
+  }
 
-    service { $service_name:
-      ensure     => 'running',
-      enable     => true,
-      require => Package[$package_name],
-    }
-
-  } else {
-
-    service { $service_name:
-      ensure     => 'stopped',
-      enable     => false,
-    }
-
+  service { $service_name:
+    ensure => $enable,
+    enable => $enable,
   }
 }

@@ -1,6 +1,5 @@
-#
-## This file is maintained by puppet. Manual changes will be overwritten.
-#
+# This file is being maintained by Puppet.
+# DO NOT EDIT
 
 #
 # Define default options for autofs.
@@ -11,7 +10,7 @@ MASTER_MAP_NAME="/etc/auto.master"
 #
 # TIMEOUT - set the default mount timeout (default 600).
 #
-TIMEOUT=<%= @mounttimeout %>
+TIMEOUT=<%= @mount_timeout %>
 #
 # NEGATIVE_TIMEOUT - set the default negative timeout for
 # 		     failed mount attempts (default 60).
@@ -29,8 +28,8 @@ TIMEOUT=<%= @mounttimeout %>
 #
 # UMOUNT_WAIT - time to wait for a response from umount(8).
 #
-<% if @umountwait -%>
-UMOUNT_WAIT=<%= @umountwait -%>
+<% if @umount_wait -%>
+UMOUNT_WAIT=<%= @umount_wait -%>
 
 <% else -%>
 #UMOUNT_WAIT=12

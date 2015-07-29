@@ -1,8 +1,7 @@
-#
-## This file is maintained by puppet. Manual changes will be overwritten.
-#
+# This file is being maintained by Puppet.
+# DO NOT EDIT
 
 <% if @mounts -%>
-<% @mounts.each do | mount| -%>
+<% @mounts.sort.each do | mount| -%>
 <%= mount %>
 <% end -%><% end -%>

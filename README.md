@@ -23,18 +23,18 @@ Boolean value to enable autofs.
 
 - *Default*: true
 
-mounttimeout
+mount_timeout
 -------
 Numeric value to set timeout of mounts in seconds.
 
 - *Default*: 300
 
-umountwait
+umount_wait
 ----------
 Numeric value to try and prevent expire delays when trying to umount from a server
 that is not available.
 
-- *DEFAILT*: undef
+- *Default*: undef
 
 browsable
 ---------
@@ -44,28 +44,29 @@ String value to set browse mode. Valid values are 'yes', 'YES', 'no' and 'NO'.
 
 mounts
 ------
-Array value to set mount paths.
+Array of mount paths.
 
 - *Default*: undef
 
 package_name
 ------------
-Name of package to install for automount functionality
+String to specify the name of the package for autofs.
 
 - *Default*: autofs
 
 service_name
 ------------
-Name of service to handle for automount functionality
+String to specify the name of the service for autofs
 
 - *Default*: autofs
 
 ### Sample usage:
 
 <pre>
-autofs::enable: true
-autofs::timeout: 2400
-autofs::browsable: 'no'
+autofs::enable: false
+autofs::mount_timeout: 2400
+autofs::browsable: no
+autofs::umount_wait: 2
 autofs::mounts:
   - +auto.master
   - /home auto.home
