@@ -7,4 +7,4 @@ summary 'autofs'
 description 'Manage automounter'
 project_page 'https://github.com/ghoneycutt/puppet-module-autofs'
 
-dependency 'ghoneycutt/nfs', '>= 0.0.1'
+dependency 'puppetlabs/stdlib', '>= 4.6.0'
